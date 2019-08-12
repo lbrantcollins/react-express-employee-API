@@ -9,7 +9,7 @@ const Employee = require('../models/employee');
 
 // Creating the index route
 // index route should show all the fruits
-router.get('/', async (req, res, next) => { 
+router.get('/', async (req, res, next) => {
   // req.body this is from the fetch request
   console.log(req.body, ' this is get all')
      try  {
@@ -19,7 +19,7 @@ router.get('/', async (req, res, next) => {
       res.status(200).json({
         success: true,
         code: 200,
-        message: `Found ${allEmployees.length} employees`, 
+        message: `Found ${allEmployees.length} employees`,
         data: allEmployees
       });
 
@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
     console.log(req.body, ' this is req.body');
     console.log(req.session, ' req.session in post route')
     const createdEmployee = await Employee.create(req.body);
-    
+    console.log('Just createdEmployee !!!!!!!!!!!!!!!!!!! ', createdEmployee);
     res.status(201).json({
       success: true,
       code: 201,
@@ -109,7 +109,7 @@ router.delete('/:id', async (req, res) => {
       res.status(200).json({
         success: true,
         code: 200,
-        message: `Successfully deleted employee ${deletedEmployee.name}`        
+        message: `Successfully deleted employee ${deletedEmployee.name}`
       });
   } catch(err){
     res.status(500).json({
